@@ -1,3 +1,13 @@
+'''
+
+    @Author: Shivraj Yelave
+    @Date: 17-08-24
+    @Last modified by: Shivraj Yelave
+    @Last modified time: 19-08-24
+    @Title: User Registration Unit Test
+
+
+'''
 import unittest  # Import the unittest module for creating and running tests.
 import user_registration  # Import the user_registration module to test the functions.
 
@@ -26,6 +36,17 @@ class TestUserValidation(unittest.TestCase):
         self.assertFalse(user_registration.valid_first_name("deven"))  # Should return False (starts with lowercase)
         self.assertFalse(user_registration.valid_first_name("ayush"))  # Should return False (starts with lowercase)
         self.assertFalse(user_registration.valid_first_name("Ay"))  # Should return False (too short)
+
+    def test_is_last_name_valid(self):
+        """
+        Description: 
+        Test case for invalid last names that should fail the validation.
+        """
+        self.assertTrue(user_registration.valid_last_name("Yelave"))  # Should return True
+        self.assertTrue(user_registration.valid_last_name("Bhoir"))  # Should return True
+        self.assertFalse(user_registration.valid_last_name("yelave"))  # Should return False
+        self.assertFalse(user_registration.valid_last_name("Bo"))  # Should return False
+
 
 if __name__ == "__main__":
     unittest.main()  # Run the tests when the script is executed directly.
