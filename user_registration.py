@@ -92,7 +92,7 @@ def valid_password(password):
     bool: True if the password is at least 8 characters long, False otherwise.
     """
     # Description: Regex pattern to validate minimum length of 8 characters
-    valid_password_format = r'^(?=.*[A-Z])(?=.*\d).{8,}$'
+    valid_password_format = r'^(?=.*[A-Z])(?=.*\d)(?=.*[\W_])(?!.*[\W_].*[\W_]).{8,}$'
 
     
     # Description: Match the input password with the regex pattern
