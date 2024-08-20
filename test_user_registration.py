@@ -3,7 +3,7 @@
     @Author: Shivraj Yelave
     @Date: 17-08-24
     @Last modified by: Shivraj Yelave
-    @Last modified time: 19-08-24
+    @Last modified time: 20-08-24
     @Title: User Registration Unit Test
 
 
@@ -60,6 +60,21 @@ class TestUserValidation(unittest.TestCase):
         self.assertFalse(user_registration.valid_email("shiv@.com"))  # Should return False (no domain name)
         self.assertFalse(user_registration.valid_email("shiv@gmail"))  # Should return False (no top-level domain)
         self.assertFalse(user_registration.valid_email("shiv@yelave,com"))  # Should return False (invalid character in domain)
+
+    def test_is_mobile_number_valid(self):
+        """
+        Description: 
+        Test case for validating mobile numbers that should pass or fail the validation.
+        """
+        # Valid mobile numbers
+        self.assertTrue(user_registration.valid_mobile_number("9919819801"))  # Should return True
+
+        # Invalid mobile numbers
+        self.assertFalse(user_registration.valid_mobile_number("991981980"))  # Should return False (only 9 digits)
+        self.assertFalse(user_registration.valid_mobile_number("919919819801"))  # Should return False (no space)
+        self.assertFalse(user_registration.valid_mobile_number("99198198012"))  # Should return False (more than 10 digits)
+        self.assertFalse(user_registration.valid_mobile_number("99198a9801"))  # Should return False (non-digit characters)
+        self.assertFalse(user_registration.valid_mobile_number("991981980"))  # Should return False (missing digit)
 
 if __name__ == "__main__":
     unittest.main()  # Run the tests when the script is executed directly.
