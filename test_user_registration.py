@@ -85,9 +85,12 @@ class TestUserValidation(unittest.TestCase):
         # Valid passwords
         self.assertTrue(user_registration.valid_password("Password1@"))  # Minimum 8 characters
         self.assertTrue(user_registration.valid_password("A1b2C3d4@"))  # Minimum 8 characters
+        self.assertTrue(user_registration.valid_password("Addddddd1@"))  
+        self.assertTrue(user_registration.valid_password("A1b2C3d4@"))  
         # Invalid passwords
         self.assertFalse(user_registration.valid_password("Short1@"))  # Less than 8 characters
-        self.assertFalse(user_registration.valid_password("short1@2"))  # Less than 8 characters
+        self.assertFalse(user_registration.valid_password("short1@2"))  # one cap letter
+        self.assertFalse(user_registration.valid_password("Shortd@d"))  # one number
         self.assertFalse(user_registration.valid_password(""))  # Empty string
 
 
