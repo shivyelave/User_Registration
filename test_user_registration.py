@@ -61,6 +61,32 @@ class TestUserValidation(unittest.TestCase):
         self.assertFalse(user_registration.valid_email("shiv@gmail"))  # Should return False (no top-level domain)
         self.assertFalse(user_registration.valid_email("shiv@yelave,com"))  # Should return False (invalid character in domain)
 
+         ## Valid
+        self.assertTrue(user_registration.valid_email("abc@yahoo.com"))           
+        self.assertTrue(user_registration.valid_email("abc.100@yahoo.com"))       
+        self.assertTrue(user_registration.valid_email("abc-100@yahoo.com"))       
+        self.assertTrue(user_registration.valid_email("abc111@abc.com"))          
+        self.assertTrue(user_registration.valid_email("abc111@abc.net"))          
+        self.assertTrue(user_registration.valid_email("abc.100@abc.com.au"))     
+        self.assertTrue(user_registration.valid_email("abc@1.com"))               
+        self.assertTrue(user_registration.valid_email("abc@gmail.com.com"))       
+        self.assertTrue(user_registration.valid_email("abc+100@gmail.com"))
+
+        ## Invalid
+        self.assertFalse(user_registration.valid_email("abc"))                  
+        self.assertFalse(user_registration.valid_email("abc@.com.my"))         
+        self.assertFalse(user_registration.valid_email("abc123@gmail.a"))       
+        self.assertFalse(user_registration.valid_email("abc123@.com"))          
+        self.assertFalse(user_registration.valid_email("abc123@.com.com"))     
+        self.assertFalse(user_registration.valid_email(".abc@abc.com"))         
+        self.assertFalse(user_registration.valid_email("abc()*@gmail.com"))    
+        self.assertFalse(user_registration.valid_email("abc@%*.com"))           
+        self.assertFalse(user_registration.valid_email("abc..2002@gmail.com"))   
+        self.assertFalse(user_registration.valid_email("abc.@gmail.com"))       
+        self.assertFalse(user_registration.valid_email("abc@abc@gmail.com"))    
+        self.assertFalse(user_registration.valid_email("abc@gmail.com.1a"))     
+        self.assertFalse(user_registration.valid_email("abc@gmail.com.aa.au"))
+
     def test_is_mobile_number_valid(self):
         """
         Description: 

@@ -59,8 +59,9 @@ def valid_email(email):
     bool: True if the email matches the format, False otherwise.
     """
     # Description: Regex pattern to validate email addresses
-    valid_email_format = r'^[a-zA-Z0-9]+[\.a-zA-Z0-9]*@[a-zA-Z0-9]+[\.a-zA-Z]*\.[a-zA-z]{2,}$'
-    
+    # valid_email_format = r'^[\w]+[\.\w.\W]*@[\w]+[\.a-zA-Z]{,1}\.[a-zA-z]{2,}$'
+    valid_email_format = r'^[\w]+([._%+-][\w]+)*@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$'
+
     # Description: Match the input email with the regex pattern
     return re.match(valid_email_format, email)
 def valid_mobile_number(mobile_number):
