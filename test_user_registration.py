@@ -76,5 +76,19 @@ class TestUserValidation(unittest.TestCase):
         self.assertFalse(user_registration.valid_mobile_number("99198a9801"))  # Should return False (non-digit characters)
         self.assertFalse(user_registration.valid_mobile_number("991981980"))  # Should return False (missing digit)
 
+
+    def test_is_password_valid(self):
+        """
+        Description: 
+        Test case for validating passwords based on predefined rules.
+        """
+        # Valid passwords
+        self.assertTrue(user_registration.valid_password("Password1@"))  # Minimum 8 characters
+        self.assertTrue(user_registration.valid_password("A1b2C3d4@"))  # Minimum 8 characters
+        # Invalid passwords
+        self.assertFalse(user_registration.valid_password("Short1@"))  # Less than 8 characters
+        self.assertFalse(user_registration.valid_password(""))  # Empty string
+
+
 if __name__ == "__main__":
     unittest.main()  # Run the tests when the script is executed directly.
