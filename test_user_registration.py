@@ -47,6 +47,19 @@ class TestUserValidation(unittest.TestCase):
         self.assertFalse(user_registration.valid_last_name("yelave"))  # Should return False
         self.assertFalse(user_registration.valid_last_name("Bo"))  # Should return False
 
+    def test_is_email_valid(self):
+        """
+        Description: 
+        Test case for validating email addresses that should pass or fail the validation.
+        """
+        # Valid email addresses
+        self.assertTrue(user_registration.valid_email("shiv@yelave.com"))  # Should return True
+        self.assertTrue(user_registration.valid_email("shiv.yelave123@gmail.co.in"))  # Should return True
+
+        # Invalid email addresses
+        self.assertFalse(user_registration.valid_email("shiv@.com"))  # Should return False (no domain name)
+        self.assertFalse(user_registration.valid_email("shiv@gmail"))  # Should return False (no top-level domain)
+        self.assertFalse(user_registration.valid_email("shiv@yelave,com"))  # Should return False (invalid character in domain)
 
 if __name__ == "__main__":
     unittest.main()  # Run the tests when the script is executed directly.
